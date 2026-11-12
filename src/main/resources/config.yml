@@ -1,6 +1,6 @@
-config-version: 2
+config-version: 3
 menu-title: "&8SHOP"
-category-title: "&8SHOP &7» %category%"
+category-title: "&8SHOP - %category%"
 categories:
   end:
     name: "&dEnd"
@@ -8,20 +8,15 @@ categories:
     slot: 11
     description: "&7End eşyalarını görüntülemek için tıkla"
     items:
-      - { material: END_STONE, name: "&dEnd Taşı", buy: 12, sell: 3 }
-      - { material: END_STONE_BRICKS, name: "&dEnd Taş Tuğlası", buy: 18, sell: 4.5 }
-      - { material: PURPUR_BLOCK, name: "&dPurpur Bloğu", buy: 28, sell: 7 }
-      - { material: PURPUR_PILLAR, name: "&dPurpur Sütunu", buy: 30, sell: 7.5 }
-      - { material: PURPUR_STAIRS, name: "&dPurpur Merdiven", buy: 24, sell: 6 }
-      - { material: END_ROD, name: "&fEnd Çubuğu", buy: 65, sell: 16 }
-      - { material: CHORUS_FRUIT, name: "&dKoro Meyvesi", buy: 22, sell: 5.5 }
-      - { material: POPPED_CHORUS_FRUIT, name: "&dPatlamış Koro Meyvesi", buy: 35, sell: 8 }
-      - { material: CHORUS_FLOWER, name: "&dKoro Çiçeği", buy: 45, sell: 11 }
-      - { material: ENDER_PEARL, name: "&5Ender İncisi", buy: 80, sell: 20 }
+      - { material: ENDER_CHEST, name: "&5Ender Sandığı", buy: 320, sell: 80 }
       - { material: ENDER_EYE, name: "&5Ender Gözü", buy: 120, sell: 30 }
-      - { material: SHULKER_SHELL, name: "&dShulker Kabuğu", buy: 350, sell: 85 }
-      - { material: DRAGON_BREATH, name: "&5Ejderha Nefesi", buy: 180, sell: 45 }
-      - { material: DRAGON_EGG, name: "&5Ejderha Yumurtası", buy: 25000, sell: 5000 }
+      - { material: END_STONE, name: "&eEnd Taşı", buy: 12, sell: 3 }
+      - { material: POTION, name: "&dİksir", buy: 90, sell: 22 }
+      - { material: END_ROD, name: "&fEnd Çubuğu", buy: 65, sell: 16 }
+      - { material: CHORUS_FLOWER, name: "&dKoro Çiçeği", buy: 45, sell: 11 }
+      - { material: PURPUR_PILLAR, name: "&5Purpur Sütunu", buy: 30, sell: 7 }
+      - { material: PURPUR_STAIRS, name: "&5Purpur Merdiven", buy: 24, sell: 6 }
+      - { material: PURPUR_BLOCK, name: "&5Purpur Bloğu", buy: 28, sell: 7 }
   nether:
     name: "&cNether"
     icon: NETHERRACK
@@ -30,44 +25,28 @@ categories:
     items:
       - { material: NETHERRACK, name: "&cNetherrack", buy: 5, sell: 1 }
       - { material: SOUL_SAND, name: "&6Ruh Kumu", buy: 12, sell: 3 }
-      - { material: SOUL_SOIL, name: "&6Ruh Toprağı", buy: 14, sell: 3.5 }
+      - { material: SOUL_SOIL, name: "&6Ruh Toprağı", buy: 14, sell: 3 }
       - { material: GLOWSTONE, name: "&eIşıktaşı", buy: 35, sell: 8 }
       - { material: GLOWSTONE_DUST, name: "&eIşıktaşı Tozu", buy: 12, sell: 3 }
-      - { material: NETHER_BRICK, name: "&cNether Tuğlası", buy: 10, sell: 2.5 }
-      - { material: NETHER_BRICKS, name: "&cNether Tuğla Bloğu", buy: 25, sell: 6 }
-      - { material: RED_NETHER_BRICKS, name: "&cKırmızı Nether Tuğlası", buy: 32, sell: 8 }
+      - { material: NETHER_BRICKS, name: "&cNether Tuğlası", buy: 25, sell: 6 }
       - { material: NETHER_WART, name: "&4Nether Wart", buy: 24, sell: 6 }
       - { material: MAGMA_BLOCK, name: "&cMagma Bloğu", buy: 22, sell: 5 }
-      - { material: BASALT, name: "&7Bazalt", buy: 12, sell: 3 }
-      - { material: BLACKSTONE, name: "&8Kara Taş", buy: 14, sell: 3.5 }
       - { material: QUARTZ, name: "&fKuvars", buy: 35, sell: 8 }
-      - { material: BLAZE_ROD, name: "&6Blaze Çubuğu", buy: 90, sell: 22 }
-      - { material: GHAST_TEAR, name: "&fGhast Gözyaşı", buy: 160, sell: 40 }
-      - { material: MAGMA_CREAM, name: "&cMagma Kremi", buy: 55, sell: 13 }
   pvp:
-    name: "&cPvP"
+    name: "&ePvP"
     icon: TOTEM_OF_UNDYING
     slot: 13
     description: "&7PvP eşyalarını görüntülemek için tıkla"
     items:
-      - { material: DIAMOND_SWORD, name: "&bElmas Kılıç", buy: 850, sell: 210 }
-      - { material: NETHERITE_SWORD, name: "&5Netherit Kılıç", buy: 2200, sell: 550 }
-      - { material: DIAMOND_AXE, name: "&bElmas Balta", buy: 700, sell: 175 }
-      - { material: BOW, name: "&6Yay", buy: 220, sell: 55 }
-      - { material: CROSSBOW, name: "&6Arbalet", buy: 300, sell: 75 }
-      - { material: ARROW, name: "&fOk", buy: 3, sell: 0.5 }
-      - { material: SHIELD, name: "&fKalkan", buy: 250, sell: 60 }
-      - { material: TRIDENT, name: "&bÜç Dişli Mızrak", buy: 1200, sell: 300 }
-      - { material: DIAMOND_HELMET, name: "&bElmas Kask", buy: 650, sell: 160 }
-      - { material: DIAMOND_CHESTPLATE, name: "&bElmas Göğüslük", buy: 1000, sell: 250 }
-      - { material: DIAMOND_LEGGINGS, name: "&bElmas Pantolon", buy: 900, sell: 225 }
-      - { material: DIAMOND_BOOTS, name: "&bElmas Bot", buy: 600, sell: 150 }
+      - { material: TOTEM_OF_UNDYING, name: "&eÖlümsüzlük Totemi", buy: 2500, sell: 625 }
       - { material: GOLDEN_APPLE, name: "&6Altın Elma", buy: 150, sell: 35 }
       - { material: ENCHANTED_GOLDEN_APPLE, name: "&dBüyülü Altın Elma", buy: 1800, sell: 450 }
-      - { material: TOTEM_OF_UNDYING, name: "&eÖlümsüzlük Totemi", buy: 2500, sell: 625 }
       - { material: ENDER_PEARL, name: "&5Ender İncisi", buy: 80, sell: 20 }
-      - { material: COBWEB, name: "&fÖrümcek Ağı", buy: 45, sell: 11 }
       - { material: OBSIDIAN, name: "&5Obsidyen", buy: 55, sell: 13 }
+      - { material: COBWEB, name: "&fÖrümcek Ağı", buy: 45, sell: 11 }
+      - { material: SHIELD, name: "&fKalkan", buy: 250, sell: 60 }
+      - { material: EXPERIENCE_BOTTLE, name: "&aTecrübe Şişesi", buy: 35, sell: 8 }
+      - { material: GOLDEN_CARROT, name: "&6Altın Havuç", buy: 25, sell: 6 }
   food:
     name: "&eYemek"
     icon: COOKED_BEEF
@@ -75,21 +54,14 @@ categories:
     description: "&7Yemekleri görüntülemek için tıkla"
     items:
       - { material: COOKED_BEEF, name: "&6Pişmiş Biftek", buy: 18, sell: 4 }
+      - { material: COOKED_CHICKEN, name: "&fPişmiş Tavuk", buy: 15, sell: 3 }
       - { material: COOKED_PORKCHOP, name: "&6Pişmiş Domuz Eti", buy: 18, sell: 4 }
-      - { material: COOKED_CHICKEN, name: "&fPişmiş Tavuk", buy: 15, sell: 3.5 }
       - { material: COOKED_MUTTON, name: "&fPişmiş Koyun Eti", buy: 16, sell: 4 }
-      - { material: COOKED_RABBIT, name: "&fPişmiş Tavşan Eti", buy: 16, sell: 4 }
       - { material: BREAD, name: "&fEkmek", buy: 8, sell: 2 }
       - { material: GOLDEN_CARROT, name: "&6Altın Havuç", buy: 25, sell: 6 }
       - { material: BAKED_POTATO, name: "&eFırınlanmış Patates", buy: 9, sell: 2 }
-      - { material: CARROT, name: "&6Havuç", buy: 6, sell: 1.5 }
-      - { material: POTATO, name: "&ePatates", buy: 6, sell: 1.5 }
       - { material: APPLE, name: "&cElma", buy: 8, sell: 2 }
-      - { material: MELON_SLICE, name: "&cKarpuz Dilimi", buy: 5, sell: 1 }
       - { material: PUMPKIN_PIE, name: "&6Balkabağı Turtası", buy: 20, sell: 5 }
-      - { material: COOKIE, name: "&6Kurabiye", buy: 4, sell: 1 }
-      - { material: COOKED_COD, name: "&fPişmiş Morina", buy: 14, sell: 3 }
-      - { material: COOKED_SALMON, name: "&6Pişmiş Somon", buy: 18, sell: 4 }
   crystals:
     name: "&bKristaller"
     icon: AMETHYST_SHARD
@@ -104,7 +76,4 @@ categories:
       - { material: DIAMOND, name: "&bElmas", buy: 220, sell: 55 }
       - { material: EMERALD, name: "&aZümrüt", buy: 150, sell: 37 }
       - { material: LAPIS_LAZULI, name: "&9Lapis Lazuli", buy: 18, sell: 4 }
-      - { material: QUARTZ, name: "&fKuvars", buy: 35, sell: 8 }
       - { material: NETHER_STAR, name: "&fNether Yıldızı", buy: 12000, sell: 3000 }
-      - { material: HEART_OF_THE_SEA, name: "&bDenizin Kalbi", buy: 1600, sell: 400 }
-      - { material: NAUTILUS_SHELL, name: "&fNautilus Kabuğu", buy: 250, sell: 60 }

@@ -101,7 +101,7 @@ public final class TabCraftMarket extends JavaPlugin implements Listener {
                     color("&8 "),
                     color("&aSol tık &7» 1 adet satın al"),
                     color("&cSağ tık &7» 1 adet sat"),
-                    color("&eShift + tık &7» 64 adet"
+                    color("&eShift + tık &7» 64 adet")
             ));
             meta.getPersistentDataContainer().set(actionKey, PersistentDataType.STRING, "product");
             meta.getPersistentDataContainer().set(categoryKey, PersistentDataType.STRING, id);

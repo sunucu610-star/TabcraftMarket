@@ -19,4 +19,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: TabCraftMarket
-          path: target/TabCraftMarket-1.0.0.jar
+          path: target/TabCraftMarket-1.2.0.jar

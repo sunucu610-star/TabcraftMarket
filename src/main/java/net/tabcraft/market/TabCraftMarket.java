@@ -7,6 +7,7 @@ import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -18,6 +19,8 @@ import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 
@@ -27,12 +30,33 @@ public final class TabCraftMarket extends JavaPlugin implements Listener {
 
     @Override public void onEnable() {
         saveDefaultConfig();
+        migrateOldConfig();
         actionKey = new NamespacedKey(this, "action");
         categoryKey = new NamespacedKey(this, "category");
         itemKey = new NamespacedKey(this, "item");
         setupEconomy();
         Bukkit.getPluginManager().registerEvents(this, this);
-        getLogger().info("TabCraftMarket aktif. Komut: /shop");
+        getLogger().info("TabCraftMarket aktif. Komutlar: /shop ve /sipariş");
+    }
+
+    // Eski sürümün config.yml dosyası sunucuda kaldıysa yeni ikon ve ürün listelerini uygula.
+    private void migrateOldConfig() {
+        if (getConfig().getInt("config-version", 1) >= 2) return;
+        try (InputStreamReader reader = new InputStreamReader(getResource("config.yml"), StandardCharsets.UTF_8)) {
+            YamlConfiguration defaults = YamlConfiguration.loadConfiguration(reader);
+            getConfig().set("categories.pvp.icon", "TOTEM_OF_UNDYING");
+            for (String id : defaults.getConfigurationSection("categories").getKeys(false)) {
+                String itemsPath = "categories." + id + ".items";
+                if (getConfig().getMapList(itemsPath).size() < 10) {
+                    getConfig().set(itemsPath, defaults.getList(itemsPath));
+                }
+            }
+            getConfig().set("config-version", 2);
+            saveConfig();
+            getLogger().info("Market config.yml yeni sürüme yükseltildi.");
+        } catch (Exception exception) {
+            getLogger().warning("Market config yükseltilemedi: " + exception.getMessage());
+        }
     }
 
     private void setupEconomy() {
@@ -88,7 +112,10 @@ public final class TabCraftMarket extends JavaPlugin implements Listener {
             Map<?, ?> product = products.get(index);
             Object rawMaterial = product.containsKey("material") ? product.get("material") : "STONE";
             Material material = Material.matchMaterial(String.valueOf(rawMaterial));
-            if (material == null) continue;
+            if (material == null) {
+                getLogger().warning("Geçersiz market eşyası: " + rawMaterial + " (" + path + ")");
+                continue;
+            }
             Object rawName = product.containsKey("name") ? product.get("name") : material.name();
             double buy = number(product.get("buy"));
             double sell = number(product.get("sell"));
@@ -109,6 +136,7 @@ public final class TabCraftMarket extends JavaPlugin implements Listener {
             display.setItemMeta(meta);
             inv.setItem(slot++, display);
         }
+        if (slot == 0) player.sendMessage(color("&cBu kategoride henüz ürün bulunmuyor."));
         ItemStack back = new ItemStack(Material.ARROW);
         ItemMeta backMeta = back.getItemMeta();
         backMeta.setDisplayName(color("&cGeri dön"));
@@ -129,9 +157,9 @@ public final class TabCraftMarket extends JavaPlugin implements Listener {
         event.setCancelled(true);
         if ("category".equals(action)) {
             String id = meta.getPersistentDataContainer().get(categoryKey, PersistentDataType.STRING);
-            if (id != null) openCategory(player, id);
+            if (id != null) Bukkit.getScheduler().runTask(this, () -> openCategory(player, id));
         } else if ("back".equals(action)) {
-            openMain(player);
+            Bukkit.getScheduler().runTask(this, () -> openMain(player));
         } else if ("product".equals(action)) {
             transact(player, event, meta);
         }

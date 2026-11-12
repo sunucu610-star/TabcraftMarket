@@ -41,17 +41,17 @@ public final class TabCraftMarket extends JavaPlugin implements Listener {
 
     // Eski sürümün config.yml dosyası sunucuda kaldıysa yeni ikon ve ürün listelerini uygula.
     private void migrateOldConfig() {
-        if (getConfig().getInt("config-version", 1) >= 2) return;
+        if (getConfig().getInt("config-version", 1) >= 3) return;
         try (InputStreamReader reader = new InputStreamReader(getResource("config.yml"), StandardCharsets.UTF_8)) {
             YamlConfiguration defaults = YamlConfiguration.loadConfiguration(reader);
             getConfig().set("categories.pvp.icon", "TOTEM_OF_UNDYING");
             for (String id : defaults.getConfigurationSection("categories").getKeys(false)) {
                 String itemsPath = "categories." + id + ".items";
-                if (getConfig().getMapList(itemsPath).size() < 10) {
+                if (getConfig().getInt("config-version", 1) < 3) {
                     getConfig().set(itemsPath, defaults.getList(itemsPath));
                 }
             }
-            getConfig().set("config-version", 2);
+            getConfig().set("config-version", 3);
             saveConfig();
             getLogger().info("Market config.yml yeni sürüme yükseltildi.");
         } catch (Exception exception) {
@@ -105,10 +105,10 @@ public final class TabCraftMarket extends JavaPlugin implements Listener {
         String category = getConfig().getString(path + ".name", id);
         String title = getConfig().getString("category-title", "&8SHOP &7» %category%")
                 .replace("%category%", ChatColor.stripColor(color(category)));
-        Inventory inv = Bukkit.createInventory(null, 54, color(title));
+        Inventory inv = Bukkit.createInventory(null, 27, color(title));
         List<Map<?, ?>> products = getConfig().getMapList(path + ".items");
         int slot = 0;
-        for (int index = 0; index < products.size() && slot < 45; index++) {
+        for (int index = 0; index < products.size() && index < 9; index++) {
             Map<?, ?> product = products.get(index);
             Object rawMaterial = product.containsKey("material") ? product.get("material") : "STONE";
             Material material = Material.matchMaterial(String.valueOf(rawMaterial));
@@ -134,15 +134,9 @@ public final class TabCraftMarket extends JavaPlugin implements Listener {
             meta.getPersistentDataContainer().set(categoryKey, PersistentDataType.STRING, id);
             meta.getPersistentDataContainer().set(itemKey, PersistentDataType.INTEGER, index);
             display.setItemMeta(meta);
-            inv.setItem(slot++, display);
+            inv.setItem(9 + slot++, display);
         }
         if (slot == 0) player.sendMessage(color("&cBu kategoride henüz ürün bulunmuyor."));
-        ItemStack back = new ItemStack(Material.ARROW);
-        ItemMeta backMeta = back.getItemMeta();
-        backMeta.setDisplayName(color("&cGeri dön"));
-        backMeta.getPersistentDataContainer().set(actionKey, PersistentDataType.STRING, "back");
-        back.setItemMeta(backMeta);
-        inv.setItem(49, back);
         player.openInventory(inv);
     }
 

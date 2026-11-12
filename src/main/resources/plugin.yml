@@ -1,0 +1,13 @@
+name: TabCraftMarket
+version: 1.0.0
+main: net.tabcraft.market.TabCraftMarket
+api-version: '1.21'
+softdepend: [Vault]
+commands:
+  tabmarket:
+    description: Opens the TabCraft shop
+    aliases: [shop, market]
+    usage: /shop
+permissions:
+  tabcraftmarket.admin:
+    default: op

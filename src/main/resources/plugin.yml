@@ -1,12 +1,12 @@
 name: TabCraftMarket
-version: 1.0.0
+version: 1.1.0
 main: net.tabcraft.market.TabCraftMarket
 api-version: '1.21'
 softdepend: [Vault]
 commands:
-  tabmarket:
+  shop:
     description: Opens the TabCraft shop
-    aliases: [shop, market]
+    aliases: [sipariş, siparis, market, tabmarket]
     usage: /shop
 permissions:
   tabcraftmarket.admin:

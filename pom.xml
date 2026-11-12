@@ -7,7 +7,7 @@
     <repository><id>jitpack</id><url>https://jitpack.io</url></repository>
   </repositories>
   <dependencies>
-    <dependency><groupId>io.papermc.paper</groupId><artifactId>paper-api</artifactId><version>26.1.2-R0.1-SNAPSHOT</version><scope>provided</scope></dependency>
+    <dependency><groupId>io.papermc.paper</groupId><artifactId>paper-api</artifactId><version>26.1.2.build.60-stable</version><scope>provided</scope></dependency>
     <dependency><groupId>com.github.MilkBowl</groupId><artifactId>VaultAPI</artifactId><version>1.7</version><scope>provided</scope></dependency>
   </dependencies>
   <build><plugins>
